@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bye party - шақыру хахаха</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- 🎥 Басты фондық видео -->
+  <section class="video-hero">
+    <video autoplay muted loop playsinline id="bgvideo">
+      <source src="intro.mp4" type="video/mp4">
+      Сіздің браузер видеоны қолдамайды.
+    </video>
+    <div class="video-overlay">
+      <h1 class="video-title">bye party</h1>
+      <p class="video-sub">2025 ж. 26 қыркүйек • Алматы қ., Тікенін буудалы</p>
+      <button id="playMusic">🎵 Музыканы қосу</button>
+    </div>
+  </section>
+
+  <!-- 📷 Masonry галерея -->
+  <section class="gallery-masonry">
+    <h2>ішемізба ағайен</h2>
+    <div class="masonry">
+      <img src="photo1.jpg" alt="photo1">
+      <img src="photo2.jpg" alt="photo2">
+      <img src="photo3.jpg" alt="photo3">
+      <img src="photo4.jpg" alt="photo4">
+      <img src="photo5.jpg" alt="photo5">
+      <img src="photo6.jpg" alt="photo6">
+    </div>
+  </section>
+
+  <!-- ✅ RSVP формасы -->
+  <section class="rsvp-section">
+    <h2>Келесіз бе?</h2>
+    <form action="https://docs.google.com/forms/d/e/ВАШ_ФОРМ_ID/formResponse" method="POST" target="_blank">
+      <input type="text" name="entry.name" placeholder="Атыңыз" required>
+      <select name="entry.answer" required>
+        <option value="">Таңдаңыз…</option>
+        <option value="Иә, келемін">Иә, келемін</option>
+        <option value="Өкінішке қарай келмеймін">Жоқ, келе алмаймын</option>
+      </select>
+      <button type="submit">Жіберу</button>
+    </form>
+  </section>
+
+  <!-- 🌙 Соңғы қара секция -->
+  <section class="thankyou">
+    <h2>Рахмет!</h2>
+  </section>
+
+  <audio id="bgMusic" src="music2.mp3" loop></audio>
+  <script>
+    const btn = document.getElementById('playMusic');
+    const audio = document.getElementById('bgMusic');
+    btn.addEventListener('click', () => {
+      audio.play();
+      btn.disabled = true;
+      btn.textContent = '🎶 Музыка ойналуда';
+    });
+  </script>
+
+</body>
+</html>
