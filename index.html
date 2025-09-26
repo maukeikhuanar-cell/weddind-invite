@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bye Party Жасаймызба</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- 🎥 Видео -->
+  <section class="video-hero">
+    <video autoplay muted loop playsinline id="bgvideo">
+      <source src="intro.mp4" type="video/mp4">
+      Сіздің браузер видеоны қолдамайды.
+    </video>
+    <div class="video-overlay">
+      <h1 class="video-title">Ішемізба агайен</h1>
+      <p class="video-sub">2025 ж. 27 қыркүйек, 23:00 • Өлгий қ., Тікенін буудалы</p>
+      <button id="playMusic">🎵 Бассай Мынаны</button>
+
+      <!-- ⏳ Таймер -->
+      <div id="countdown" class="countdown">
+        <p>Ішкенге дейін қалған уақыт:</p>
+        <span id="timer">Жүктелуде…</span>
+      </div>
+
+      <!-- 📷 Бір сурет видеоны үстіне -->
+      <img src="photo1.jpg" class="overlay-photo" alt="photo1">
+    </div>
+  </section>
+
+  <!-- 📷 Галерея (қалған 3 сурет) -->
+  <section class="gallery-grid">
+    <h2>Ішеміз</h2>
+    <div class="grid-container">
+      <img src="photo2.jpg" class="grid-photo" alt="photo2">
+      <img src="photo3.jpg" class="grid-photo" alt="photo3">
+      <img src="photo6.jpg" class="grid-photo" alt="photo6">
+    </div>
+  </section>
+
+  <!-- ✅ RSVP -->
+  <section class="rsvp-section">
+    <h2>Келесіз бе?</h2>
+    <form id="rsvpForm">
+      <input type="text" name="name" placeholder="Атыңыз" required>
+      <select name="attendance" required>
+        <option value="">Таңдаңыз…</option>
+        <option value="yes">Иә, келемін</option>
+        <option value="no">Жоқ, келе алмаймын</option>
+      </select>
+      <button type="submit">Жіберу</button>
+    </form>
+    <p id="thankyou" class="hidden">Рахмет! 💖</p>
+  </section>
+
+  <!-- 🌙 Соңғы қара-жасыл секция + сурет -->
+  <section class="thankyou">
+    <img src="photo5.jpg" class="thankyou-photo" alt="photo5">
+    <h2>Күтеміз!</h2>
+  </section>
+
+  <audio id="bgMusic" src="music2.mp3" loop></audio>
+  <script>
+    // Музыка
+    const btn = document.getElementById('playMusic');
+    const audio = document.getElementById('bgMusic');
+    btn.addEventListener('click', () => {
+      audio.play();
+      btn.disabled = true;
+      btn.textContent = '🎶 Музыка ойналуда';
+    });
+
+    // RSVP
+    const form = document.getElementById('rsvpForm');
+    const thankyou = document.getElementById('thankyou');
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      form.style.display = 'none';
+      thankyou.classList.remove('hidden');
+    });
+
+    // Таймер 2025 жылдың 27 қыркүйек 23:00
+    const weddingDate = new Date(2025, 8, 27, 23, 0, 0); // Ай 0-ден саналады, 8 = қыркүйек
+    const timerEl = document.getElementById('timer');
+    function updateCountdown() {
+      const now = new Date();
+      const diff = weddingDate - now;
+      if (diff <= 0) {
+        timerEl.textContent = "Той басталды!";
+        clearInterval(interval);
+        return;
+      }
+      const days = Math.floor(diff / (1000*60*60*24));
+      const hours = Math.floor((diff / (1000*60*60)) % 24);
+      const minutes = Math.floor((diff / (1000*60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+      timerEl.textContent = `${days} күн ${hours} сағ ${minutes} мин ${seconds} сек`;
+    }
+    const interval = setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+
+</body>
+</html>
