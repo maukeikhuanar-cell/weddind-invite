@@ -71,8 +71,10 @@ body {
   column-count: 2;
   column-gap: 15px;
 }
-@media (min-width: 768px) {
-  .masonry { column-count: 3; }
+@media (max-width: 768px) {
+  #bgvideo {
+    object-fit: contain;  /* экранға сыйдыру */
+  }
 }
 .masonry img {
   width: 100%;
