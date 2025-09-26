@@ -68,13 +68,11 @@ body {
   margin-bottom: 30px;
 }
 .masonry {
-  column-count: 2;
+  column-count: 2;       /* телефонда 2 баған */
   column-gap: 15px;
 }
-@media (max-width: 768px) {
-  #bgvideo {
-    object-fit: contain;  /* экранға сыйдыру */
-  }
+@media (min-width: 768px) {
+  .masonry { column-count: 4; } /* планшет-десктопта 4 баған */
 }
 .masonry img {
   width: 100%;
@@ -82,7 +80,7 @@ body {
   border-radius: 15px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   transition: transform .3s ease;
-  break-inside: avoid;
+  break-inside: avoid;   /* баған ішінде дұрыс орналасу */
 }
 .masonry img:hover { transform: scale(1.05); }
 
