@@ -56,33 +56,45 @@ body {
 #playMusic:disabled { opacity: 0.6; cursor: default; }
 
 /* 📷 Masonry галерея */
-.gallery-masonry {
+.gallery-grid {
   padding: 60px 20px;
-  background: rgba(255,255,255,0.7);
+  position: relative;
+  height: 600px; /* галерея биіктігі */
+  background: #fdfdfd;
 }
-.gallery-masonry h2 {
+.gallery-grid h2 {
   text-align: center;
   font-family: 'Great Vibes', cursive;
   font-size: 2.5rem;
   color: #d86ba0;
   margin-bottom: 30px;
 }
-.masonry {
-  column-count: 2;       /* телефонда 2 баған */
-  column-gap: 15px;
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 20px;
+  height: 100%;
+  width: 90%;
+  margin: 0 auto;
 }
-@media (min-width: 768px) {
-  .masonry { column-count: 4; } /* планшет-десктопта 4 баған */
-}
-.masonry img {
+.grid-container img {
   width: 100%;
-  margin-bottom: 15px;
+  height: 100%;
+  object-fit: cover;
   border-radius: 15px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   transition: transform .3s ease;
-  break-inside: avoid;   /* баған ішінде дұрыс орналасу */
 }
-.masonry img:hover { transform: scale(1.05); }
+.grid-container img:hover {
+  transform: scale(1.05);
+}
+
+/* Суреттердің орналасуын ерекшелеу (міндетті емес, тек визуалды әртүрлілік үшін) */
+.top-left { grid-column: 1; grid-row: 1; }
+.top-right { grid-column: 2; grid-row: 1; }
+.bottom-left { grid-column: 1; grid-row: 2; }
+.bottom-right { grid-column: 2; grid-row: 2; }
 
 /* ✅ RSVP */
 .rsvp-section {
