@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Айдана ❤️ Нұржан – Тойға шақыру</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <audio id="bgmusic" src="music1.mp3" autoplay loop></audio>
+
+  <div class="overlay"></div>
+  <div class="invite">
+    <h1 class="names">Айдана & Нұржан</h1>
+    <p class="date">2025 ж. 15 қазан</p>
+    <p class="place">Алматы қ., Grand Hall</p>
+
+    <!-- Таймер -->
+    <div id="countdown" class="timer"></div>
+
+    <a class="rsvp" href="https://forms.gle/СіздіңGoogleFormСілтемеңіз" target="_blank">RSVP</a>
+
+    <!-- Фотогалерея -->
+    <div class="gallery">
+      <img src="photo1.jpg" alt="photo1">
+      <img src="photo2.jpg" alt="photo2">
+      <img src="photo3.jpg" alt="photo3">
+    </div>
+  </div>
+
+  <script>
+    // Таймерді есептеу
+    const weddingDate = new Date("2025-10-15T00:00:00").getTime();
+    const timer = document.getElementById("countdown");
+    setInterval(() => {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+      const days = Math.floor(distance / (1000*60*60*24));
+      const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+      const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+      const seconds = Math.floor((distance % (1000*60)) / 1000);
+      timer.textContent = `${days} күн ${hours} сағ ${minutes} мин ${seconds} сек`;
+    }, 1000);
+  </script>
+</body>
+</html>
